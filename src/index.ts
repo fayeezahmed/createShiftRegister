@@ -1,4 +1,4 @@
-import { getNextWeekDates } from "./utils/getNextWeekDates";
+import { getNextWeekDates, otherFn } from "./utils/getNextWeekDates";
 
 const dayCellMap = {
   "Monday" : "A1:B1",
@@ -55,3 +55,10 @@ function onOpen() {
       .addItem('Run', 'formatChatAgentSchedule')
       .addToUi();
 }
+
+(global as any).onOpen = onOpen;
+(global as any).getNextWeekDates = getNextWeekDates;
+(global as any).createSheet = createSheet;
+(global as any).formatChatAgentSchedule = formatChatAgentSchedule;
+(global as any).setupDays = setupDays;
+

@@ -1,3 +1,4 @@
 **/**
 !dist/**
 !src/appsscript.json
+!appsscript.json
