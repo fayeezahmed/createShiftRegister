@@ -30,7 +30,7 @@ jobs:
 
       - name: Save current .clasprc.json contents to CLASPRC_JSON_FILE environment variable
         id: save-clasprc
-       run: |
+        run: |
           echo ::add-mask::$(tr -d '\n\r' < ~/.clasprc.json)
           echo "CLASPRC_JSON_FILE=$(tr -d '\n\r' < ~/.clasprc.json)" >> $GITHUB_ENV        
       
