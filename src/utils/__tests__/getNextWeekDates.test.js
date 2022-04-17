@@ -32,7 +32,7 @@ describe("getNextWeekDates", () => {
     })
   });
 
-  it.skip("should populate next week's dates for any day this week if next week spans multiple years", () => {
+  it("should populate next week's dates for any day this week if next week spans multiple years", () => {
     const expectedDays =  [27, 28, 29, 30, 31, 1, 2];
     const thisWeek = [20, 21, 22, 23, 24, 25, 26];
 
