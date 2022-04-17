@@ -1,0 +1,15 @@
+{
+  "name": "createshiftregister",
+  "version": "1.0.0",
+  "description": "Automate creation of the monthly Shift Register for iERA",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "clasp": "clasp"
+  },
+  "author": "Fayeez Ahmed",
+  "license": "MIT",
+  "dependencies": {
+    "@google/clasp": "^2.4.1"
+  }
+}
