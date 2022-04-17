@@ -50,6 +50,9 @@ jobs:
         id: checkout-repo
         if: ${{github.event_name	!= 'schedule' }}
         uses: actions/checkout@v2
+
+      - name: Build
+        id: build
         run: "npm run build"
 
       - name: Set scriptId in .clasp.json file
