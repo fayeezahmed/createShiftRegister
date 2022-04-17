@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "tsc": "tsc",
+    "build:webpack": "webpack --mode none",
     "build": "npm run postinstall && tsc --build",
     "clean": "tsc --build --clean",
     "test": "jest",
@@ -27,6 +28,11 @@
     "jest": "^27.5.1",
     "replace-in-file": "^6.3.2",
     "ts-jest": "^27.1.4",
-    "ts-node": "^10.7.0"
+    "ts-node": "^10.7.0",
+    "replace-in-file": "^6.3.2",
+    "gas-webpack-plugin": "^2.2.1",
+    "ts-loader": "^9.2.8",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
   }
 }
