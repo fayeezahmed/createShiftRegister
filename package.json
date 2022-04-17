@@ -4,12 +4,21 @@
   "description": "Automate creation of the monthly Shift Register for iERA",
   "main": "src/index.js",
   "scripts": {
+    "tsc": "tsc",
+    "build": "npm run postinstall && tsc --build",
+    "clean": "tsc --build --clean",
     "test": "jest",
-    "clasp": "clasp"
+    "clasp": "clasp",
+    "postinstall": "replace-in-file \"declare var console\" \"//declare var console\" node_modules/@types/google-apps-script/google-apps-script.base.d.ts"
   },
   "author": "Fayeez Ahmed",
   "license": "MIT",
   "dependencies": {
-    "@google/clasp": "^2.4.1"
+    "@google/clasp": "^2.4.1",
+    "@types/google-apps-script": "^1.0.46",
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "replace-in-file": "^6.3.2"
   }
 }
