@@ -63,6 +63,10 @@ jobs:
         id: build
         run: "npm run build:webpack"
 
+      - name: Unit tests
+        id: unit-tests
+        run: "npm run test"
+
       - name: Set scriptId in .clasp.json file
         id: set-script-id
         if: ${{ github.event_name	!= 'schedule' && env.SCRIPT_ID}}
