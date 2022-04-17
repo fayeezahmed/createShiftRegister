@@ -63,10 +63,6 @@ jobs:
         id: build
         run: "npm run build:webpack"
 
-      - name: Copy appscript
-        id: copy-appscript
-        run: cp src/appsscript.json dist/
-
       - name: Set scriptId in .clasp.json file
         id: set-script-id
         if: ${{ github.event_name	!= 'schedule' && env.SCRIPT_ID}}
