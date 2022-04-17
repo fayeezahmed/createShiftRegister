@@ -2,6 +2,7 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "noEmitOnError": true,
+    "strict": true,
     "removeComments": false,
     "sourceMap": true,
     "target": "ESNEXT",

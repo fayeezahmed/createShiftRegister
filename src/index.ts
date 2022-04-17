@@ -31,7 +31,7 @@ function setupDays(day, index) {
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Sunday"]}`).merge()
   
 
-  const { nextWeekDates, year, month } = getNextWeekDates();
+  const { nextWeekDates, year, month } = getNextWeekDates(new Date());
   nextWeekDates.forEach(date => {
     const day = new Date(year, month, date)
     const formattedDay = Utilities.formatDate(day, "GMT", "EEEE d");
