@@ -1,6 +1,3 @@
-//@ts-ignore
-import "@types/google-apps-script/google-apps-script.spreadsheet"
-
 const dayCellMap = {
   "Monday" : "A1:B1",
   "Tuesday" : "C1:D1",
