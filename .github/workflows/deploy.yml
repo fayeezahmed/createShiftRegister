@@ -65,7 +65,9 @@ jobs:
 
       - name: Copy appscript
         id: copy-appscript
-        run: "cp src/appscript.json dist/"
+        run: |
+          pwd
+          cp src/appscript.json dist/
 
       - name: Set scriptId in .clasp.json file
         id: set-script-id
