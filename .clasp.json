@@ -1,6 +1,6 @@
 {
   "scriptId":"1n47Rr7_3aLui8VLj68LRxAJa3wgum38a_FD0maPIbTQuMy8hO6K6BMak",
-  "rootDir":"/Users/fahmed/personal/createShiftRegister",
+  "rootDir":"src",
   "fileExtension": "js",
   "filePushOrder": ["src/index.js"]
 }
