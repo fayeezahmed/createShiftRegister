@@ -49,7 +49,15 @@ jobs:
       - name: Checkout repo
         id: checkout-repo
         if: ${{github.event_name	!= 'schedule' }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Use node
+        id: use-node
+        uses: actions/setup-node@v3
+
+      - name: Install
+        id: install
+        run: "npm install"
 
       - name: Build
         id: build
