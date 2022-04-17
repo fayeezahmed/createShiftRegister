@@ -1,4 +1,4 @@
-import { getNextWeekDates, otherFn } from "./utils/getNextWeekDates";
+import { getNextWeekDates } from "./utils/getNextWeekDates";
 
 const dayCellMap = {
   "Monday" : "A1:B1",
