@@ -95,11 +95,10 @@ jobs:
       - name: Untar files
         id: archive-artifact
         run: |
-          tar -xvf /home/runner/work/createShiftRegister/build_artifact.tar .
-          pwd
-          ls /home/runner/work/createShiftRegister/
-          echo "----"
-          ls /home/runner/work/createShiftRegister/createShiftRegister
+          tar -xvf /home/runner/work/createShiftRegister/build_artifact.tar
+          mv createShiftRegister/* .
+          mv createShiftRegister/.* .
+          rmdir createShiftRegister
 
       - name: Unit tests
         id: unit-tests
