@@ -70,14 +70,14 @@ jobs:
       - name: Tar files
         id: archive-artifact
         run: | 
-          tar -cf build_artifact.tar /home/runner/work/createShiftRegister
-          ls /
+          tar -cf build_artifact.tar .
+          ls 
 
       - uses: actions/upload-artifact@v3
         id: upload-artifact
         with:
           name: build-artifact
-          path: /home/runner/work/createShiftRegister/createShiftRegister/build_artifact.tar
+          path: build_artifact.tar
 
   test:
     runs-on: ubuntu-latest
