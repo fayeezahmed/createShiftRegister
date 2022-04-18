@@ -91,13 +91,15 @@ jobs:
         run: |
           ls
           pwd
+
       - name: Untar files
         id: archive-artifact
         run: |
-          tar -xvf /home/runner/work/createShiftRegister/build_artifact.tar
+          tar -xvf build_artifact.tar
 
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
+          
 
       - name: Move directory
         run: |
