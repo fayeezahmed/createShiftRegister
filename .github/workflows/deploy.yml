@@ -96,6 +96,8 @@ jobs:
         id: archive-artifact
         run: |
           tar -xvf /home/runner/work/createShiftRegister/build_artifact.tar
+          cp -a createShiftRegister/. .
+          rm -rf createShiftRegister
 
       - name: Unit tests
         id: unit-tests
