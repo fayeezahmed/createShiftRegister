@@ -91,9 +91,6 @@ jobs:
         id: archive-artifact
         run: |
           tar -xvf build_artifact.tar
-
-          #- name: Setup tmate session
-          #  uses: mxschmitt/action-tmate@v3
           
       - name: Unit tests
         id: unit-tests
@@ -104,6 +101,15 @@ jobs:
     needs: test
     if: success() && github.ref == 'refs/heads/main'
     steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+
+      - name: Untar files
+        id: archive-artifact
+        run: |
+          tar -xvf build_artifact.tar
+
       - name: Set scriptId in .clasp.json file
         id: set-script-id
         if: ${{ github.event_name != 'schedule' && env.SCRIPT_ID}}
