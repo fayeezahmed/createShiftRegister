@@ -87,34 +87,17 @@ jobs:
         with:
           name: build-artifact
 
-      - name: where am i
-        run: |
-          ls
-          pwd
-
       - name: Untar files
         id: archive-artifact
         run: |
           tar -xvf build_artifact.tar
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+          #- name: Setup tmate session
+          #  uses: mxschmitt/action-tmate@v3
           
-
-      - name: Move directory
-        run: |
-          ls
-          pwd
-          cp -a createShiftRegister/. .
-          rm -rf createShiftRegister
-
       - name: Unit tests
         id: unit-tests
-        run: |
-          pwd
-          ls /home/runner/work/createShiftRegister
-          ls /home/runner/work/createShiftRegister/createShiftRegister
-          npm run test
+        run: npm run test
 
   deploy:
     runs-on: ubuntu-latest
