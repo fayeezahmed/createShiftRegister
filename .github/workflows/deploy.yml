@@ -67,18 +67,15 @@ jobs:
         id: build
         run: "npm run build:webpack"
 
-      - name: Where am I
-        id: where-am-i
-        run: |
-          pwd
-          ls $HOME
-          ls ~/
-
+      - name: Tar files
+        id: archive-artifact
+        run: tar -cvf build_artifact.tar /home/runner/work/createShiftRegister
 
       - uses: actions/upload-artifact@v3
+        id: upload-artifact
         with:
-          name: build-artifact
-          path: /home/runner/work/createShiftRegister
+          name: upload-artifact
+          path: /home/runner/work/build_artifact.tar
 
   test:
     runs-on: ubuntu-latest
