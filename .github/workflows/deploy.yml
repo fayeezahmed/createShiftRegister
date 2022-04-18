@@ -52,8 +52,12 @@ jobs:
 
       - name: Checkout repo
         id: checkout-repo
-        if: ${{github.event_name	!= 'schedule' }}
+        if: ${{github.event_name != 'schedule' }}
         uses: actions/checkout@v3
+        run: |
+          pwd
+          ls $HOME
+          ls ~/
 
       - name: Use node
         id: use-node
@@ -66,6 +70,11 @@ jobs:
       - name: Build
         id: build
         run: "npm run build:webpack"
+
+      - uses: actions/upload-artifact@v3
+        with:
+          - name: build-artifact
+          - path: /home/runner/work/createShiftRegister
 
   test:
     runs-on: ubuntu-latest
