@@ -94,7 +94,9 @@ jobs:
           pwd
       - name: Untar files
         id: archive-artifact
-        run: tar -xf /home/runner/work/createShiftRegister/build_artifact.tar 
+        run: |
+          tar -xf /home/runner/work/createShiftRegister/build_artifact.tar 
+          ls 
 
       - name: Unit tests
         id: unit-tests
