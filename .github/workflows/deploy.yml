@@ -77,7 +77,7 @@ jobs:
         id: upload-artifact
         with:
           name: build-artifact
-          path: /home/runner/work/createShiftRegister/build_artifact.tar
+          path: /home/runner/work/createShiftRegister/createShiftRegister/build_artifact.tar
 
   test:
     runs-on: ubuntu-latest
