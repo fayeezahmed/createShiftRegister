@@ -97,7 +97,9 @@ jobs:
         run: |
           tar -xf /home/runner/work/createShiftRegister/build_artifact.tar 
           pwd
-          ls /home/runner/work/createShiftRegister/package.json
+          ls /home/runner/work/createShiftRegister/
+          echo "----"
+          ls /home/runner/work/createShiftRegister/createShiftRegister
 
       - name: Unit tests
         id: unit-tests
