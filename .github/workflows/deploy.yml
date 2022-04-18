@@ -70,8 +70,8 @@ jobs:
       - name: Tar files
         id: archive-artifact
         run: | 
-          tar -cvf build_artifact.tar /home/runner/work/createShiftRegister
-          ls /home/runner/work
+          tar -cf build_artifact.tar /home/runner/work/createShiftRegister
+          ls /
 
       - uses: actions/upload-artifact@v3
         id: upload-artifact
