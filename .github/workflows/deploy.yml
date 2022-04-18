@@ -100,8 +100,8 @@ jobs:
       - name: Unit tests
         id: unit-tests
         run: |
-        ls
-        "npm run test"
+          ls
+          npm run test
 
   deploy:
     runs-on: ubuntu-latest
