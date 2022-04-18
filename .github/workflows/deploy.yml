@@ -88,6 +88,10 @@ jobs:
           name: build-artifact
           path: /home/runner/work/createShiftRegister
 
+      - name: where am i
+        run: |
+          ls
+          pwd
       - name: Untar files
         id: archive-artifact
         run: tar -xf /home/runner/work/createShiftRegister/createShiftRegister/build_artifact.tar /home/runner/work/createShiftRegister
