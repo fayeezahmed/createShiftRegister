@@ -89,7 +89,7 @@ jobs:
 
       - name: Untar files
         id: archive-artifact
-        run: tar -xvf /home/runner/work/createShiftRegister/build_artifact.tar /home/runner/work/createShiftRegister
+        run: tar -xf /home/runner/work/createShiftRegister/createShiftRegister/build_artifact.tar /home/runner/work/createShiftRegister
 
       - name: Unit tests
         id: unit-tests
