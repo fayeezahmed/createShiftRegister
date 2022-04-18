@@ -54,10 +54,6 @@ jobs:
         id: checkout-repo
         if: ${{github.event_name != 'schedule' }}
         uses: actions/checkout@v3
-        run: |
-          pwd
-          ls $HOME
-          ls ~/
 
       - name: Use node
         id: use-node
@@ -70,6 +66,14 @@ jobs:
       - name: Build
         id: build
         run: "npm run build:webpack"
+
+      - name: Where am I
+        id: where-am-i
+        run: |
+          pwd
+          ls $HOME
+          ls ~/
+
 
       - uses: actions/upload-artifact@v3
         with:
