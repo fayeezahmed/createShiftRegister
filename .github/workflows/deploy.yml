@@ -96,6 +96,9 @@ jobs:
         id: archive-artifact
         run: |
           tar -xvf /home/runner/work/createShiftRegister/build_artifact.tar
+
+      - name: Move directory
+        run: |
           cp -a createShiftRegister/. .
           rm -rf createShiftRegister
 
