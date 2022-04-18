@@ -97,7 +97,6 @@ jobs:
         run: |
           tar -xf /home/runner/work/createShiftRegister/build_artifact.tar 
           pwd
-          ls /home/runner/work/createShiftRegister/createShiftRegister/package.json
           ls /home/runner/work/createShiftRegister/package.json
 
       - name: Unit tests
