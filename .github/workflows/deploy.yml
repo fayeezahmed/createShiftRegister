@@ -77,8 +77,8 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          - name: build-artifact
-          - path: /home/runner/work/createShiftRegister
+          name: build-artifact
+          path: /home/runner/work/createShiftRegister
 
   test:
     runs-on: ubuntu-latest
