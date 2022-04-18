@@ -99,6 +99,8 @@ jobs:
 
       - name: Move directory
         run: |
+          ls
+          pwd
           cp -a createShiftRegister/. .
           rm -rf createShiftRegister
 
