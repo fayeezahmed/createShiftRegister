@@ -86,7 +86,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: build-artifact
-          path: /home/runner/work/createShiftRegister
 
       - name: where am i
         run: |
