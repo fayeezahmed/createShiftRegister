@@ -74,13 +74,21 @@ jobs:
       - uses: actions/upload-artifact@v3
         id: upload-artifact
         with:
-          name: upload-artifact
-          path: /home/runner/work/build_artifact.tar
+          name: build-artifact
+          path: /home/runner/work/createShiftRegister/build_artifact.tar
 
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+
+      - name: Untar files
+        id: archive-artifact
+        run: tar -xvf /home/runner/work/createShiftRegister/build_artifact.tar /home/runner/work/createShiftRegister
+
       - name: Unit tests
         id: unit-tests
         run: "npm run test"
