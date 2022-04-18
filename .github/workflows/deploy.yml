@@ -99,7 +99,7 @@ jobs:
 
       - name: Unit tests
         id: unit-tests
-        run:|
+        run: |
         ls
         "npm run test"
 
