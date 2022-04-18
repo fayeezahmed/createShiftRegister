@@ -18,38 +18,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install clasp
-        id: install-clasp
-        run: sudo npm install @google/clasp@latest -g
-
-      - name: Write CLASPRC_JSON secret to .clasprc.json file
-        id: write-clasprc
-        run: echo "$CLASPRC_JSON_SECRET" >> ~/.clasprc.json
-        env:
-          CLASPRC_JSON_SECRET: ${{ secrets.CLASPRC_JSON }}
-
-      - name: Check clasp login status
-        id: clasp_login
-        run: clasp login --status
-
-      - name: Save current .clasprc.json contents to CLASPRC_JSON_FILE environment variable
-        id: save-clasprc
-        run: |
-          echo ::add-mask::$(tr -d '\n\r' < ~/.clasprc.json)
-          echo "CLASPRC_JSON_FILE=$(tr -d '\n\r' < ~/.clasprc.json)" >> $GITHUB_ENV        
-      
-      - name: Save CLASPRC_JSON_FILE environment variable to CLASPRC_JSON repo secret
-        id: set-clasprc-secret
-        if: ${{ env.CLASPRC_JSON_FILE != env.CLASPRC_JSON_SECRET  }}
-        uses: hmanzur/actions-set-secret@v2.0.0
-        env:
-          CLASPRC_JSON_SECRET: ${{ secrets.CLASPRC_JSON }}
-        with:
-          name: "CLASPRC_JSON"
-          value: ${{ env.CLASPRC_JSON_FILE }}
-          repository: ${{ github.repository }}
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-
       - name: Checkout repo
         id: checkout-repo
         if: ${{github.event_name != 'schedule' }}
@@ -110,6 +78,37 @@ jobs:
         run: |
           tar -xvf build_artifact.tar
 
+      - name: Install clasp
+        id: install-clasp
+        run: sudo npm install @google/clasp@latest -g
+
+      - name: Write CLASPRC_JSON secret to .clasprc.json file
+        id: write-clasprc
+        run: echo "$CLASPRC_JSON_SECRET" >> ~/.clasprc.json
+        env:
+          CLASPRC_JSON_SECRET: ${{ secrets.CLASPRC_JSON }}
+
+      - name: Check clasp login status
+        id: clasp_login
+        run: clasp login --status
+
+      - name: Save current .clasprc.json contents to CLASPRC_JSON_FILE environment variable
+        id: save-clasprc
+        run: |
+          echo ::add-mask::$(tr -d '\n\r' < ~/.clasprc.json)
+          echo "CLASPRC_JSON_FILE=$(tr -d '\n\r' < ~/.clasprc.json)" >> $GITHUB_ENV        
+      
+      - name: Save CLASPRC_JSON_FILE environment variable to CLASPRC_JSON repo secret
+        id: set-clasprc-secret
+        if: ${{ env.CLASPRC_JSON_FILE != env.CLASPRC_JSON_SECRET  }}
+        uses: hmanzur/actions-set-secret@v2.0.0
+        env:
+          CLASPRC_JSON_SECRET: ${{ secrets.CLASPRC_JSON }}
+        with:
+          name: "CLASPRC_JSON"
+          value: ${{ env.CLASPRC_JSON_FILE }}
+          repository: ${{ github.repository }}
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Set scriptId in .clasp.json file
         id: set-script-id
         if: ${{ github.event_name != 'schedule' && env.SCRIPT_ID}}
