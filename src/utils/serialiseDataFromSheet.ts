@@ -24,9 +24,14 @@ function formatDataFromSheet(data: Array<Array<string>>) : SerialisedOutput  {
   const newData = [...data];
   const serialisedOutput : SerialisedOutput = {Monday:[], Tuesday:[], Wednesday:[], Thursday:[], Friday:[], Saturday:[], Sunday:[], Adhoc: []} 
   newData.forEach((schedule) => {
-    if(["active", "absence", "adhoc"].includes(schedule[STATUS])) {
-      const hasMultipleDays = schedule[DAYS].split(',').length > 1;
+    if(!schedule[STATUS]) {
+      console.warn(
+        `${schedule[NAME]} has no status specified. Please specify a status!`,
+      )
+      return
+    }
 
+    if(["active", "absence", "adhoc"].includes(schedule[STATUS])) {
       if(schedule[STATUS] === "adhoc") {
         serialisedOutput["Adhoc"].push({
           name: schedule[NAME],
@@ -35,6 +40,13 @@ function formatDataFromSheet(data: Array<Array<string>>) : SerialisedOutput  {
         })
         return
       }
+
+      if(!schedule[DAYS]) {
+        console.warn(`${schedule[NAME]} has status ${schedule[STATUS]} but no day specified. Please fill in the day!`)
+        return
+      }
+
+      const hasMultipleDays = schedule[DAYS].split(',').length > 1;
 
       if(!hasMultipleDays) {
         serialisedOutput[schedule[DAYS]].push({
