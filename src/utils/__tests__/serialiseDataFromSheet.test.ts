@@ -148,11 +148,47 @@ describe('serialiseDataFromSheet', () => {
     })
 
   }),
+
   it('should populate Adhoc day if a chat agent is doing adhoc shifts', () => {
     const output = serialiseDataFromSheet(testData);
     expect(output["Adhoc"][0].name).toEqual("Salman Hassan")
     expect(output["Adhoc"][0].status).toEqual("adhoc")
     expect(output["Adhoc"][0].notes).toEqual("Will do shifts when can. Removed from schedule and register.")
 
+  })
+
+  it('should throw warning if status is empty', () => {
+    const originalWarn = console.warn
+
+    let consoleOutput:Array<string> = []
+    const mockedWarn = (output: string) => consoleOutput.push(output)
+    console.warn = mockedWarn
+    const noStatus = ["Hassan Ahmed", "", "", ""]
+
+    const output = serialiseDataFromSheet([ ...testData, noStatus ]);
+    expect(consoleOutput).toEqual([
+        'Hassan Ahmed has no status specified. Please specify a status!',
+    ])
+    console.warn = originalWarn
+  })
+
+  it('should throw warning if no day specified and status is empty, active or absent', () => {
+    const originalWarn = console.warn
+
+    let consoleOutput:Array<string> = []
+    const mockedWarn = (output: string) => consoleOutput.push(output)
+    console.warn = mockedWarn
+
+    const statusAndNoDay = [ 
+      ["Amir Aziz", "", "active", ""],
+      ["Ibrahim Khan", "", "absence", ""]
+    ]
+    const output = serialiseDataFromSheet([ ...testData, ...statusAndNoDay ]);
+    expect(consoleOutput).toEqual([
+        'Amir Aziz has status active but no day specified. Please fill in the day!',
+        'Ibrahim Khan has status absence but no day specified. Please fill in the day!',
+    ])
+
+    console.warn = originalWarn
   })
 })
