@@ -1,7 +1,7 @@
 export function getNextWeekDates(currentDate: Date) { 
   const dayOfWeek = currentDate.getDay();
   const dayOfMonth = currentDate.getDate();
-  const month = currentDate.getMonth();
+  let month = currentDate.getMonth();
   const year = currentDate.getFullYear();
   const lastDayOfMonth = new Date(year, month + 1, 0).getDate()
   const nextWeekDates = [calculateNextMonday(dayOfMonth, dayOfWeek, lastDayOfMonth)];
@@ -14,6 +14,10 @@ export function getNextWeekDates(currentDate: Date) {
       nextWeekDates.push(nextWeekDates[0] + i);
     }
   }
+
+  // TODO: improve since in dec this will be wrong
+  // TODO: add check for new year
+  newMonthDay > 1 ? month++ : null
 
   return  { nextWeekDates, year, month }
 }

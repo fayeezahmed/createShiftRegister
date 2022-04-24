@@ -1,6 +1,6 @@
 import { getNextWeekDates } from "./utils/getNextWeekDates";
 import { dayCellMap } from "./utils/dayCellMap";
-import renderSchedule from "./view/renderSchedule";
+import { renderSchedule } from "./view/renderSchedule";
 
 
 function formatChatAgentSchedule() {
@@ -8,12 +8,12 @@ function formatChatAgentSchedule() {
   const activeSheet = SpreadsheetApp.getActiveSheet()
   const values = activeSheet.getRange("Chat Agents!A2:C8").getValues();
   const scheduleSheet = createSheet("Weekly Schedule");
-  ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].forEach(setupDays);
+  setupDays()
   
-  renderSchedule(activeSheet, 'Week 1');
+  renderSchedule(activeSheet, 'Weekly Schedule');
 }
 
-function setupDays(day, index) {
+function setupDays() {
   const activeSheet = SpreadsheetApp.getActiveSheet();
   // activeSheet.getRange("Weekly Schedule!").setValue("Chat Agents");
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Monday"]}`).merge()
