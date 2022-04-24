@@ -53,4 +53,5 @@ function onOpen() {
 (global as any).createSheet = createSheet;
 (global as any).formatChatAgentSchedule = formatChatAgentSchedule;
 (global as any).setupDays = setupDays;
+(global as any).renderSchedule = renderSchedule;
 
