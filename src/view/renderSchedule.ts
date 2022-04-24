@@ -31,4 +31,7 @@ function renderSchedule(
     })
   })
 }
-export default renderSchedule;
+
+export {
+  renderSchedule
+}
