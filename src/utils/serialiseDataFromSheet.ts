@@ -1,24 +1,10 @@
+import { SerialisedOutput } from '../types';
+
 const NAME = 0;
 const DAYS = 1;
 const STATUS = 2;
 const NOTES = 3;
 
-interface AgentDetails {
-  name: string,
-  status: string,
-  notes: string
-}
-
-interface SerialisedOutput {
-  Monday: Array<AgentDetails>,
-  Tuesday: Array<AgentDetails>,
-  Wednesday: Array<AgentDetails>,
-  Thursday: Array<AgentDetails>,
-  Friday: Array<AgentDetails>,
-  Saturday: Array<AgentDetails>,
-  Sunday: Array<AgentDetails>,
-  Adhoc: Array<AgentDetails>,
-}
 
 function formatDataFromSheet(data: Array<Array<string>>) : SerialisedOutput  {
   const newData = [...data];

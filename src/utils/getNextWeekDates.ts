@@ -26,3 +26,16 @@ export function calculateNextMonday(dayOfMonth: number, dayOfWeek: number, lastD
   const nextMonday = (dayOfMonth + daysOfWeekLeft + 1) % lastDayOfMonth
   return nextMonday;
 }
+
+function getCurrentDates(currentDate: Date) {
+  const dayOfWeek = currentDate.getDay();
+  const dayOfMonth = currentDate.getDate();
+  const month = currentDate.getMonth();
+  const year = currentDate.getFullYear();
+
+  return { dayOfWeek, dayOfMonth, month, year }
+}
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString();
+}

@@ -6,7 +6,8 @@
     "removeComments": false,
     "sourceMap": true,
     "target": "ESNEXT",
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["google-apps-script"]
   },
   "include": [
     "src/**/*"

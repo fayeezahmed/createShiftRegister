@@ -6,3 +6,5 @@ function getData() {
 
     return data.getValues()
 }
+
+export default getData;

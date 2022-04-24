@@ -1,14 +1,7 @@
 import { getNextWeekDates } from "./utils/getNextWeekDates";
+import { dayCellMap } from "./utils/dayCellMap";
+import renderSchedule from "./view/renderSchedule";
 
-const dayCellMap = {
-  "Monday" : "A1:B1",
-  "Tuesday" : "C1:D1",
-  "Wednesday" : "E1:F1",
-  "Thursday" : "G1:H1",
-  "Friday" : "I1:J1",
-  "Saturday" : "K1:L1",
-  "Sunday" : "M1:N1"
-}
 
 function formatChatAgentSchedule() {
   onOpen()
@@ -16,8 +9,9 @@ function formatChatAgentSchedule() {
   const values = activeSheet.getRange("Chat Agents!A2:C8").getValues();
   const scheduleSheet = createSheet("Weekly Schedule");
   ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].forEach(setupDays);
-  Logger.log(JSON.stringify(values));
-  }
+  
+  renderSchedule(activeSheet, 'Week 1');
+}
 
 function setupDays(day, index) {
   const activeSheet = SpreadsheetApp.getActiveSheet();
@@ -38,8 +32,6 @@ function setupDays(day, index) {
     const dayName = day.toLocaleString('en-GB', { weekday: 'long' })
     activeSheet.getRange(`Weekly Schedule!${dayCellMap[dayName]}`).setValue(formattedDay)
   })
-  // const mon = Utilities.formatDate(new Date(2022, 3, 18), "GMT", "Ed");
-  // activeSheet.getRange(`Weekly Schedule!${MON_CELL}`).setValue(mon)
 }
 
 
