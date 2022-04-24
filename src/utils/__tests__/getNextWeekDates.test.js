@@ -1,4 +1,4 @@
-import { getNextWeekDates, calculateNextMonday } from "../getNextWeekDates";
+import { getNextWeekDates, calculateNextMonday, formSheetName } from "../getNextWeekDates";
 
 
 describe("getNextWeekDates", () => {
@@ -73,4 +73,22 @@ describe("getNextWeekDates", () => {
     const actualMonday = calculateNextMonday(today, monday, lastDayOfMonth);
     expect(actualMonday).toEqual(expectedMonday);
   });
+  
+  it.only("should formulate correct sheet name", () => {
+    const todayDate = new Date(2022, 3, 18);
+    const dates = [todayDate.toLocaleString()]
+    let lastDate;
+    for(let i=1; i<7; i++) {
+      // lastDate = dates[dates.length - 1];
+      const nextDay = new Date()
+      
+      nextDay.setDate(todayDate.getDate() + i)
+      dates.push(nextDay.toLocaleString())
+    }
+    console.log(dates)
+    const sheetName = formSheetName(dates) 
+    const expected = '18/04 - 24/04' 
+
+    expect(sheetName).toEqual(expected);
+  })
 })

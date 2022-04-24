@@ -1,8 +1,5 @@
 export function getNextWeekDates(currentDate: Date) { 
-  const dayOfWeek = currentDate.getDay();
-  const dayOfMonth = currentDate.getDate();
-  const month = currentDate.getMonth();
-  const year = currentDate.getFullYear();
+  const { dayOfWeek, dayOfMonth, month, year } = getCurrentDates(currentDate);
   const lastDayOfMonth = new Date(year, month + 1, 0).getDate()
   const nextWeekDates = [calculateNextMonday(dayOfMonth, dayOfWeek, lastDayOfMonth)];
   
@@ -16,6 +13,12 @@ export function getNextWeekDates(currentDate: Date) {
   }
 
   return  { nextWeekDates, year, month }
+}
+
+export function formSheetName(dates: Array<string>): string {
+  const monday = dates[0].split('/').slice(0,-1).join('/')
+  const sunday = dates[dates.length - 1].split('/').slice(0,-1).join('/')
+  return `${monday} - ${sunday}`
 }
 
 export function calculateNextMonday(dayOfMonth: number, dayOfWeek: number, lastDayOfMonth: number) {
