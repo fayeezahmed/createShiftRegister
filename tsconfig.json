@@ -7,7 +7,7 @@
     "sourceMap": true,
     "target": "ESNEXT",
     "outDir": "dist",
-    "types": ["google-apps-script"]
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*"

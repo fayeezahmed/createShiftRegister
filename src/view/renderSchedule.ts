@@ -1,6 +1,5 @@
 import getData from "../utils/getDataFromSheet";
 import serialiseDataFromSheet from "../utils/serialiseDataFromSheet";
-import "google-apps-script.spreadsheet";
 import { AgentDetails } from '../types';
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
