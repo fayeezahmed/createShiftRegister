@@ -16,8 +16,6 @@ export function getNextWeekDates(currentDate: Date) {
 }
 
 export function calculateNextMonday(today: Date){//, dayOfMonth: number, dayOfWeek: number, lastDayOfMonth: number) {
-  // Date.getDay() returns 0 for Sunday, so we enforce 7 instead of 0
-  //  for our calculations
   const todayDate = today.getDate();
   const dayOfWeek = 1 + 7 - today.getDay()
   const remainingDays = dayOfWeek % 7 || 7
