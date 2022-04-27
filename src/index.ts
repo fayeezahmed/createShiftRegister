@@ -25,11 +25,11 @@ function setupDays() {
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Sunday"]}`).merge()
   
 
-  const { nextWeekDates, year, month } = getNextWeekDates(new Date());
+  const nextWeekDates  = getNextWeekDates(new Date());
   nextWeekDates.forEach(date => {
-    const day = new Date(year, month, date)
-    const formattedDay = Utilities.formatDate(day, "GMT", "EEEE d");
-    const dayName = day.toLocaleString('en-GB', { weekday: 'long' })
+    const day = new Date(date)
+    const dayName = day.toLocaleString('en-GB', { weekday: 'long' });
+    const formattedDay = `${dayName} ${day.getDate()}`
     activeSheet.getRange(`Weekly Schedule!${dayCellMap[dayName]}`).setValue(formattedDay)
   })
 }
