@@ -14,6 +14,8 @@ const columnMap = {
   "Adhoc": ["O", "P"]
 }
 
+const cache = { 'Monday': 2, 'Tuesday': 2, 'Wednesday': 2, 'Thursday': 2, 'Friday': 2, 'Saturday': 2, 'Sunday': 2}
+
 function renderSchedule(
   activeSheet: GoogleAppsScript.Spreadsheet.Sheet,
   sheetName: string
@@ -23,11 +25,14 @@ function renderSchedule(
   
   days.forEach(day => {
     serlialisedData[day].forEach((chatAgent: AgentDetails) => {
-      const nameCell = `${sheetName}!${columnMap[day][0]}2`;
-      const infoCell = `${sheetName}!${columnMap[day][1]}2`;
+      const cellCache = cache[day];
+      const nameCell = `${sheetName}!${columnMap[day][0]}${cellCache}`;
+      const infoCell = `${sheetName}!${columnMap[day][1]}${cellCache}`;
       activeSheet.getRange(nameCell).setValue(chatAgent.name)
       activeSheet.getRange(infoCell).setValue(chatAgent.notes)
       if(chatAgent.status === 'absence') activeSheet.getRange(`${nameCell}:${infoCell}`).setBackground('orange')
+
+      cache[day]++
     })
   })
 }
