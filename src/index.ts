@@ -28,8 +28,8 @@ function setupDays() {
   const nextWeekDates  = getNextWeekDates(new Date());
   nextWeekDates.forEach(date => {
     const day = new Date(date)
-    const formattedDay = Utilities.formatDate(day, "GMT", "EEEE d");
-    const dayName = day.toLocaleString('en-GB', { weekday: 'long' })
+    const dayName = day.toLocaleString('en-GB', { weekday: 'long' });
+    const formattedDay = `${dayName} ${day.getDate()}`
     activeSheet.getRange(`Weekly Schedule!${dayCellMap[dayName]}`).setValue(formattedDay)
   })
 }
