@@ -6,7 +6,7 @@ const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 const columnMap = {
   "Monday": ["A", "B"],
   "Tuesday": ["C", "D"],
-  "Wedneday": ["E", "F"],
+  "Wednesday": ["E", "F"],
   "Thursday": ["G", "H"],
   "Friday": ["I", "J"],
   "Saturday": ["K", "L"],
