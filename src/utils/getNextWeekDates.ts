@@ -4,8 +4,9 @@ export function getNextWeekDates(currentDate: Date) {
   let month = currentDate.getMonth();
   const year = currentDate.getFullYear();
   const nextWeekDates = [calculateNextMonday(currentDate)];
-
+  
   const mondayCopy = new Date(nextWeekDates[0])
+
   for (let i=1; i<7; i++) {
     const tomorrow = mondayCopy.getDate() + 1
     const newDate = new Date(mondayCopy.setDate(tomorrow))
@@ -15,18 +16,25 @@ export function getNextWeekDates(currentDate: Date) {
   return nextWeekDates
 }
 
+// function addDays(date, days) {
+//   var result = new Date(date);
+//   result.setDate(result.getDate() + days);
+//   return result;
+// }
+
 export function calculateNextMonday(today: Date){//, dayOfMonth: number, dayOfWeek: number, lastDayOfMonth: number) {
-  const todayDate = today.getDate();
+  const todayDate = new Date(today);
   const dayOfWeek = 1 + 7 - today.getDay()
   const remainingDays = dayOfWeek % 7 || 7
-  const getNextMonday =  todayDate + remainingDays;
-  const nextMonday = today.setDate(getNextMonday)
+  
+  todayDate.setDate(todayDate.getDate() + remainingDays);
 
-  const month = today.toLocaleString('default', { month: 'long' });
-  const year = today.getFullYear();
-  const lastDayOfMonth = new Date(year, today.getMonth() +1, 0).getDate()
 
-  return new Date(`${getNextMonday % lastDayOfMonth} ${month} ${year} UTC`);
+  // https://stackoverflow.com/questions/32469269/javascript-date-give-wrong-date-off-by-one-hour
+  const dstOffset = new Date(todayDate);
+  dstOffset.setTime( dstOffset.getTime() - new Date().getTimezoneOffset()*60*1000 );
+
+  return new Date(dstOffset);
 }
 
 function getCurrentDates(currentDate: Date) {
