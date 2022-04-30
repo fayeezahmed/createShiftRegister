@@ -8,9 +8,9 @@ function formatChatAgentSchedule() {
   const activeSheet = SpreadsheetApp.getActiveSheet()
   const values = activeSheet.getRange("Chat Agents!A2:C8").getValues();
   const scheduleSheet = createSheet("Weekly Schedule");
-  setupDays()
+  const sheetName = setupDays()
   
-  renderSchedule(activeSheet, 'Weekly Schedule');
+  renderSchedule(activeSheet, sheetName);
 }
 
 function setupDays() {
@@ -32,6 +32,18 @@ function setupDays() {
     const formattedDay = `${dayName} ${day.getDate()}`
     activeSheet.getRange(`Weekly Schedule!${dayCellMap[dayName]}`).setValue(formattedDay)
   })
+
+  const sheetName = renameSheet(nextWeekDates, activeSheet)
+  return sheetName;
+}
+
+function renameSheet(nextWeekDates, activeSheet) {
+  const [ firstDate,,,,,,lastDate ] = nextWeekDates;
+  const formattedFirst = `${firstDate.getDate()}/${firstDate.getMonth()}`
+  const formattedLast = `${lastDate.getDate()}/${lastDate.getMonth()}`
+  const sheetName = `${formattedFirst} - ${formattedLast}`
+  activeSheet.setName(sheetName)
+  return sheetName;
 }
 
 
@@ -54,4 +66,5 @@ function onOpen() {
 (global as any).formatChatAgentSchedule = formatChatAgentSchedule;
 (global as any).setupDays = setupDays;
 (global as any).renderSchedule = renderSchedule;
+(global as any).renameSheet = renameSheet;
 
