@@ -99,25 +99,6 @@ describe("getNextWeekDates", () => {
   });
 })
 
-
-// function createExpectedDates(initialDate) {
-//   const date = new Date(initialDate)
-//   const initialOffset = dstOffset(date)
-//   initialOffset.setTime( initialOffset.getTime() - new Date().getTimezoneOffset()*60*1000 );
-// 
-//   const weekDates = [new Date(initialOffset)]
-//   for (let i=1; i<7; i++) {
-//     const tomorrow = date.getDate() + 1
-//     const newDate = new Date(date.setDate(tomorrow))
-//     
-//     const offset = dstOffset(newDate)
-//     console.log(offset)
-//     weekDates.push(new Date(offset))
-//   }
-// 
-//   return weekDates
-// }
-// 
 function dstOffset(date) {
   const dstOffset = new Date(date);
   dstOffset.setTime( dstOffset.getTime() - new Date().getTimezoneOffset()*60*1000 );
