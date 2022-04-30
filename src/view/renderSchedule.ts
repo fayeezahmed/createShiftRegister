@@ -22,18 +22,22 @@ function renderSchedule(
 ) {
   const data = getData();
   const serlialisedData = serialiseDataFromSheet(data);
+  const parsedSheetName = `${sheetName}!`
   
   days.forEach(day => {
-    serlialisedData[day].forEach((chatAgent: AgentDetails) => {
-      const cellCache = cache[day];
-      const nameCell = `${sheetName}!${columnMap[day][0]}${cellCache}`;
-      const infoCell = `${sheetName}!${columnMap[day][1]}${cellCache}`;
-      activeSheet.getRange(nameCell).setValue(chatAgent.name)
-      activeSheet.getRange(infoCell).setValue(chatAgent.notes)
-      if(chatAgent.status === 'absence') activeSheet.getRange(`${nameCell}:${infoCell}`).setBackground('orange')
-
-      cache[day]++
-    })
+    serlialisedData[day].forEach((chatAgent) => {
+        const cellCache = cache[day];
+        const nameCell = `${columnMap[day][0]}${cellCache}`;
+        const infoCell = `${columnMap[day][1]}${cellCache}`
+        const nameCellFull = `${parsedSheetName}${nameCell}`;
+        const infoCellFull = `${parsedSheetName}${infoCell}`;
+        const range = `${parsedSheetName}${nameCell}:${infoCell}`;
+        activeSheet.getRange(nameCellFull).setValue(chatAgent.name);
+        activeSheet.getRange(infoCellFull).setValue(chatAgent.notes);
+        if (chatAgent.status === 'absence')
+            activeSheet.getRange(range).setBackground('orange');
+        cache[day]++;
+    });
   })
 }
 
