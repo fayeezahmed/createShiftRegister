@@ -39,8 +39,8 @@ function setupDays() {
 
 function renameSheet(nextWeekDates, activeSheet) {
   const [ firstDate,,,,,,lastDate ] = nextWeekDates;
-  const formattedFirst = `${firstDate.getDate()}/${firstDate.getMonth()}`
-  const formattedLast = `${lastDate.getDate()}/${lastDate.getMonth()}`
+  const formattedFirst = `${firstDate.getDate()}/${firstDate.getMonth() + 1}`
+  const formattedLast = `${lastDate.getDate()}/${lastDate.getMonth() + 1}`
   const sheetName = `${formattedFirst} - ${formattedLast}`
   activeSheet.setName(sheetName)
   return sheetName;
