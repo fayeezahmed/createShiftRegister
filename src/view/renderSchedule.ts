@@ -13,6 +13,7 @@ const columnMap = {
   "Sunday": ["M", "N"],
   "Adhoc": ["O", "P"]
 }
+const lightCornFlowerBlue2 = '#a4c2f4'
 
 // This is the last inputted row for each day, so we don't overwrite the previous cell with a new chat agent
 const initialRowNum = 2
@@ -36,10 +37,12 @@ function renderSchedule(
         const range = `${parsedSheetName}${nameCell}:${infoCell}`;
         activeSheet.getRange(nameCellFull).setValue(chatAgent.name);
         activeSheet.getRange(infoCellFull).setValue(chatAgent.notes);
-        if (chatAgent.status === 'absence')
+        if (chatAgent.status === 'absence'){
             activeSheet.getRange(range).setBackground('orange');
-        if (chatAgent.status === 'adhoc')
-            activeSheet.getRange(range).setBackground('light cornflower blue 2');
+        }
+        if (chatAgent.status === 'adhoc'){
+            activeSheet.getRange(range).setBackground(lightCornFlowerBlue2);
+        }
         nextRow[day]++;
     });
   })
