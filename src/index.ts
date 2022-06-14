@@ -1,6 +1,7 @@
 import { getNextWeekDates } from "./utils/getNextWeekDates";
 import { dayCellMap } from "./utils/dayCellMap";
 import { renderSchedule } from "./view/renderSchedule";
+import { columnMap } from './constants/columnMap';
 
 
 function formatChatAgentSchedule() {
@@ -14,6 +15,21 @@ function formatChatAgentSchedule() {
 }
 
 function setStyling(activeSheet) {
+  // set column wdith of columns until O
+  activeSheet.setColumnWidths(1, 15, 150);
+  // set column width of P longer as it's adhoc and has longer text usually
+  activeSheet.setColumnWidth(16, 300);
+  
+  // 1,2  5,6  9,10  13,14
+  const columns =[[1,2], [5,6], [9,10], [13,14]]
+  const lastRow = activeSheet.getMaxRow();
+  const lightGrey = '#cccccc'
+  Object.keys(columnMap).forEach((day) => {
+    const fromNotation = `${columnMap[day][0]}1` //A1
+    const toNotation = `${columnMap[day][1]}1000` //B1000
+    activeSheet.getRange(`${fromNotation}:${toNotation}`).setBackground(lightGrey)
+  });
+
   const style = SpreadsheetApp.newTextStyle()
     .setFontSize(12)
     .setBold(true)
