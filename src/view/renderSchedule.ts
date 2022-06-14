@@ -2,7 +2,7 @@ import getData from "../utils/getDataFromSheet";
 import serialiseDataFromSheet from "../utils/serialiseDataFromSheet";
 import { AgentDetails } from '../types';
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Adhoc"]
 const columnMap = {
   "Monday": ["A", "B"],
   "Tuesday": ["C", "D"],

@@ -5,5 +5,6 @@ export const dayCellMap = {
   "Thursday" : "G1:H1",
   "Friday" : "I1:J1",
   "Saturday" : "K1:L1",
-  "Sunday" : "M1:N1"
+  "Sunday" : "M1:N1",
+  "Adhoc" : "O1:P1"
 }
