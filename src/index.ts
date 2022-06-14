@@ -1,6 +1,7 @@
 import { getNextWeekDates } from "./utils/getNextWeekDates";
 import { dayCellMap } from "./utils/dayCellMap";
 import { renderSchedule } from "./view/renderSchedule";
+import { columnMap } from './constants/columnMap';
 
 
 function formatChatAgentSchedule() {
@@ -11,6 +12,34 @@ function formatChatAgentSchedule() {
   const sheetName = setupDays()
   
   renderSchedule(activeSheet, sheetName);
+}
+
+function setStyling(activeSheet) {
+  // set column wdith of columns until O
+  activeSheet.setColumnWidths(1, 15, 150);
+  // set column width of P longer as it's adhoc and has longer text usually
+  activeSheet.setColumnWidth(16, 300);
+  
+  // 1,2  5,6  9,10  13,14
+  const columns =[[1,2], [5,6], [9,10], [13,14]]
+  const lightGrey = '#cccccc'
+  Object.keys(columnMap).forEach((day) => {
+    const fromNotation = `${columnMap[day][0]}1` //A1
+    const toNotation = `${columnMap[day][1]}1000` //B1000
+    activeSheet.getRange(`${fromNotation}:${toNotation}`).setBackground(lightGrey)
+  });
+
+  const style = SpreadsheetApp.newTextStyle()
+    .setFontSize(12)
+    .setBold(true)
+    .build();
+
+  const headers = activeSheet.getRange('Weekly Schedule!A1:Z1')
+  const allCells = activeSheet.getRange('Weekly Schedule!A1:Z100')
+  headers.setTextStyle(style);
+  headers.setHorizontalAlignment('center')
+
+  allCells.setWrap(true)
 }
 
 function setupDays() {
@@ -24,6 +53,7 @@ function setupDays() {
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Saturday"]}`).merge()
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Sunday"]}`).merge()
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Adhoc"]}`).merge()
+  setStyling(activeSheet)
   
 
   const nextWeekDates  = getNextWeekDates(new Date());
