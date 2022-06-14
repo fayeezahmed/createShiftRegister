@@ -13,6 +13,20 @@ function formatChatAgentSchedule() {
   renderSchedule(activeSheet, sheetName);
 }
 
+function setStyling(activeSheet) {
+  const style = SpreadsheetApp.newTextStyle()
+    .setFontSize(12)
+    .setBold(true)
+    .build();
+
+  const headers = activeSheet.getRange('Weekly Schedule!A1:Z1')
+  const allCells = activeSheet.getRange('Weekly Schedule!A1:Z100')
+  headers.setTextStyle(style);
+  headers.setHorizontalAlignment('center')
+
+  allCells.setWrap(true)
+}
+
 function setupDays() {
   const activeSheet = SpreadsheetApp.getActiveSheet();
   // activeSheet.getRange("Weekly Schedule!").setValue("Chat Agents");
@@ -24,6 +38,7 @@ function setupDays() {
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Saturday"]}`).merge()
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Sunday"]}`).merge()
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Adhoc"]}`).merge()
+  setStyling(activeSheet)
   
 
   const nextWeekDates  = getNextWeekDates(new Date());
