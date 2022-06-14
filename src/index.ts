@@ -23,6 +23,7 @@ function setupDays() {
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Friday"]}`).merge()
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Saturday"]}`).merge()
   activeSheet.getRange(`Weekly Schedule!${dayCellMap["Sunday"]}`).merge()
+  activeSheet.getRange(`Weekly Schedule!${dayCellMap["Adhoc"]}`).merge()
   
 
   const nextWeekDates  = getNextWeekDates(new Date());
@@ -32,6 +33,8 @@ function setupDays() {
     const formattedDay = `${dayName} ${day.getDate()}`
     activeSheet.getRange(`Weekly Schedule!${dayCellMap[dayName]}`).setValue(formattedDay)
   })
+
+  activeSheet.getRange(`Weekly Schedule!${dayCellMap["Adhoc"]}`).setValue('Adhoc')
 
   const sheetName = renameSheet(nextWeekDates, activeSheet)
   return sheetName;
