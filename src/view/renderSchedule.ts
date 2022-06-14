@@ -14,7 +14,9 @@ const columnMap = {
   "Adhoc": ["O", "P"]
 }
 
-const cache = { 'Monday': 2, 'Tuesday': 2, 'Wednesday': 2, 'Thursday': 2, 'Friday': 2, 'Saturday': 2, 'Sunday': 2}
+// This is the last inputted row for each day, so we don't overwrite the previous cell with a new chat agent
+const initialRowNum = 2
+const nextRow = { 'Monday': initialRowNum, 'Tuesday': initialRowNum, 'Wednesday': initialRowNum, 'Thursday': initialRowNum, 'Friday': initialRowNum, 'Saturday': initialRowNum, 'Sunday': initialRowNum, 'Adhoc': initialRowNum}
 
 function renderSchedule(
   activeSheet: GoogleAppsScript.Spreadsheet.Sheet,
@@ -26,7 +28,7 @@ function renderSchedule(
   
   days.forEach(day => {
     serlialisedData[day].forEach((chatAgent) => {
-        const cellCache = cache[day];
+        const cellCache = nextRow[day];
         const nameCell = `${columnMap[day][0]}${cellCache}`;
         const infoCell = `${columnMap[day][1]}${cellCache}`
         const nameCellFull = `${parsedSheetName}${nameCell}`;
@@ -36,7 +38,9 @@ function renderSchedule(
         activeSheet.getRange(infoCellFull).setValue(chatAgent.notes);
         if (chatAgent.status === 'absence')
             activeSheet.getRange(range).setBackground('orange');
-        cache[day]++;
+        if (chatAgent.status === 'adhoc')
+            activeSheet.getRange(range).setBackground('light cornflower blue 2');
+        nextRow[day]++;
     });
   })
 }
