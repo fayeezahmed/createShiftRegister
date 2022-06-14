@@ -22,7 +22,6 @@ function setStyling(activeSheet) {
   
   // 1,2  5,6  9,10  13,14
   const columns =[[1,2], [5,6], [9,10], [13,14]]
-  const lastRow = activeSheet.getMaxRow();
   const lightGrey = '#cccccc'
   Object.keys(columnMap).forEach((day) => {
     const fromNotation = `${columnMap[day][0]}1` //A1
