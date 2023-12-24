@@ -25,6 +25,8 @@ jobs:
       - name: Use node
         id: use-node
         uses: actions/setup-node@v3
+        with:
+          node-version: 17
 
       - name: Install
         id: install
