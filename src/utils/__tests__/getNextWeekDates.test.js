@@ -31,7 +31,7 @@ describe("getNextWeekDates", () => {
   });
 
   it.skip("should populate next week's dates for any day this week if they span multiple months", () => {
-    const expectedDays = createExpectedDates('27 March 2022 UTC', false);
+    const expectedDays = createExpectedDates('28 March 2022 UTC', false);
     const thisWeek =  [21, 22, 23, 24, 25, 26, 27];
 
     thisWeek.forEach((today) => {

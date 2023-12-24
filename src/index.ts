@@ -16,9 +16,9 @@ function formatChatAgentSchedule() {
 
 function setStyling(activeSheet) {
   // set column wdith of columns until O
-  activeSheet.setColumnWidths(1, 15, 150);
+  activeSheet.setColumnWidths(1, 20, 150);
   // set column width of P longer as it's adhoc and has longer text usually
-  activeSheet.setColumnWidth(16, 300);
+  activeSheet.setColumnWidth(21, 300);
   
   // 1,2  5,6  9,10  13,14
   const columns =[[1,2], [5,6], [9,10], [13,14]]
