@@ -1,4 +1,5 @@
 import { getNextWeekDates, calculateNextMonday } from "../getNextWeekDates";
+import { expect, it, describe } from 'vitest'
 
 function createExpectedDates(initialDate, shouldDst = true) {
   const date = new Date(initialDate)
