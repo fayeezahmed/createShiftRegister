@@ -8,7 +8,7 @@
     "build:webpack": "webpack --mode none",
     "build": "npm run postinstall && tsc --build",
     "clean": "tsc --build --clean",
-    "test": "jest",
+    "test": "vitest",
     "clasp": "clasp",
     "postinstall": "replace-in-file \"declare var console\" \"//declare var console\" node_modules/@types/google-apps-script/google-apps-script.base.d.ts"
   },
@@ -31,6 +31,7 @@
     "ts-jest": "^27.1.4",
     "ts-loader": "^9.2.8",
     "ts-node": "^10.7.0",
+    "vitest": "^1.1.0",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
   }

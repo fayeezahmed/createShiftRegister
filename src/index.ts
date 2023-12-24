@@ -16,14 +16,16 @@ function formatChatAgentSchedule() {
 
 function setStyling(activeSheet) {
   // set column wdith of columns until O
-  activeSheet.setColumnWidths(1, 15, 150);
+  activeSheet.setColumnWidths(1, 20, 150);
   // set column width of P longer as it's adhoc and has longer text usually
-  activeSheet.setColumnWidth(16, 300);
+  activeSheet.setColumnWidth(21, 300);
   
   // 1,2  5,6  9,10  13,14
   const columns =[[1,2], [5,6], [9,10], [13,14]]
   const lightGrey = '#cccccc'
-  Object.keys(columnMap).forEach((day) => {
+  Object.keys(columnMap)
+      .filter((_, index) =>  index % 2 === 0)
+      .forEach((day) => {
     const fromNotation = `${columnMap[day][0]}1` //A1
     const toNotation = `${columnMap[day][1]}1000` //B1000
     activeSheet.getRange(`${fromNotation}:${toNotation}`).setBackground(lightGrey)

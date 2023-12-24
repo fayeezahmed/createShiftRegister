@@ -1,4 +1,5 @@
 import { getWeeksInMonth } from "../getWeeksInMonth";
+import { expect, it, describe } from 'vitest'
 
 const expectedWeeks = [
   6, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4

@@ -1,5 +1,6 @@
 import serialiseDataFromSheet from '../serialiseDataFromSheet';
 
+import { expect, it, describe } from 'vitest'
 const testData = [
   ["Yosra", "Monday", "active", ""],
   ["Murtaza Chaudhary", "Tuesday,Wednesday,Sunday", "active", ""],
@@ -161,7 +162,7 @@ describe('serialiseDataFromSheet', () => {
     const originalWarn = console.warn
 
     let consoleOutput:Array<string> = []
-    const mockedWarn = (output: string) => consoleOutput.push(output)
+    const mockedWarn = (message?: any) => {consoleOutput.push(message)}
     console.warn = mockedWarn
     const noStatus = ["Hassan Ahmed", "", "", ""]
 
@@ -176,7 +177,7 @@ describe('serialiseDataFromSheet', () => {
     const originalWarn = console.warn
 
     let consoleOutput:Array<string> = []
-    const mockedWarn = (output: string) => consoleOutput.push(output)
+    const mockedWarn = (message?: any) => {consoleOutput.push(message)}
     console.warn = mockedWarn
 
     const statusAndNoDay = [ 
