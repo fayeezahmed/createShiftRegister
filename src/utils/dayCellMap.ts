@@ -1,10 +1,10 @@
 export const dayCellMap = {
-  "Monday" : "A1:B1",
-  "Tuesday" : "C1:D1",
-  "Wednesday" : "E1:F1",
-  "Thursday" : "G1:H1",
-  "Friday" : "I1:J1",
-  "Saturday" : "K1:L1",
-  "Sunday" : "M1:N1",
-  "Adhoc" : "O1:P1"
+  "Monday" : "A1:C1",
+  "Tuesday" : "D1:F1",
+  "Wednesday" : "G1:I1",
+  "Thursday" : "J1:L1",
+  "Friday" : "M1:O1",
+  "Saturday" : "P1:R1",
+  "Sunday" : "S1:U1",
+  "Adhoc" : "V1:X1"
 }
