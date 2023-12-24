@@ -23,7 +23,9 @@ function setStyling(activeSheet) {
   // 1,2  5,6  9,10  13,14
   const columns =[[1,2], [5,6], [9,10], [13,14]]
   const lightGrey = '#cccccc'
-  Object.keys(columnMap).forEach((day) => {
+  Object.keys(columnMap)
+      .filter((_, index) =>  index % 2 === 0)
+      .forEach((day) => {
     const fromNotation = `${columnMap[day][0]}1` //A1
     const toNotation = `${columnMap[day][1]}1000` //B1000
     activeSheet.getRange(`${fromNotation}:${toNotation}`).setBackground(lightGrey)
