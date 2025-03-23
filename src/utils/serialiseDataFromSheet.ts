@@ -45,7 +45,8 @@ function formatDataFromSheet(data: Array<Array<string>>) : SerialisedOutput  {
       const multipleDays = schedule[DAYS].split(',')
       multipleDays.forEach(day => {
         // worst case O(8)
-        serialisedOutput[day].push({
+        const trimmedDay = day.trim();
+        serialisedOutput[trimmedDay].push({
           name: schedule[NAME],
           status: schedule[STATUS],
           notes: schedule[NOTES]
