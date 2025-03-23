@@ -88,9 +88,9 @@ jobs:
         env:
           CLASPRC_JSON_SECRET: ${{ secrets.CLASPRC_JSON }}
 
-      - name: Check clasp login
+      - name: Check clasp login status
         id: clasp_login
-        run: clasp login status
+        run: clasp login
 
       - name: Save current .clasprc.json contents to CLASPRC_JSON_FILE environment variable
         id: save-clasprc
